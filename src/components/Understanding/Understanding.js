@@ -4,6 +4,10 @@ import { connect } from 'react-redux';
 
 class Understanding extends Component {
 
+    handleNext = (event) => {
+        this.props.history.push('/support');
+    }
+
     render() {
 
         return (
@@ -11,6 +15,7 @@ class Understanding extends Component {
             <div className="viewContainer">
                 <h2>How well are you understanding the content?</h2>
 
+                <button className="nextBtn" onClick={this.handleNext}>Next</button>
             </div>
 
         )

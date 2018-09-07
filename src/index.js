@@ -9,6 +9,9 @@ import logger from 'redux-logger';
 
 const storeInstance = createStore(
 
+
+
+    
     applyMiddleware(logger),
 )
 

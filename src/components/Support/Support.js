@@ -4,6 +4,11 @@ import { connect } from 'react-redux';
 
 class Support extends Component {
 
+    handleNext = (event) => {
+        this.props.history.push('/comments');
+    }
+
+
     render() {
 
         return (
@@ -11,6 +16,8 @@ class Support extends Component {
             <div className="viewContainer">
                 <h2>How well are you being supported?</h2>
 
+
+                <button className="nextBtn" onClick={this.handleNext}>Next</button>
             </div>
 
         )
