@@ -21,6 +21,18 @@ const defaultObject = {
     if (action.type === 'ADD_FEELING') {
          return {...state, feeling: newInfo.feeling}
     }
+    else if (action.type === 'ADD_UNDERSTANDING') {
+        return {...state, understanding: newInfo.understanding}
+    }
+    else if(action.type === 'ADD_SUPPORT') {
+        return {...state, support: newInfo.support}
+    }
+    else if(action.type === 'ADD_COMMENTS') {
+        return {...state, comments: newInfo.comments}
+    }
+    else if(action.type === 'EMPTY_INFO') {
+        return defaultObject;
+    }
     return state;
  }
 

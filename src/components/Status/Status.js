@@ -29,15 +29,15 @@ class Status extends Component {
     //function called when the next button is clicked
     handleSubmit = (event) => {
         event.preventDefault();
-        //this.props.history.push('/understanding');
-        console.log('feeling submited', this.state);
+        
+        console.log('feeling submitted', this.state);
 
         //variable to hold action for redux store
         const action = { type: 'ADD_FEELING', payload: this.state}
         
         this.props.dispatch(action);
 
-        //this.props.history('understanding');
+        this.props.history.push('understanding');
 
         this.clearFields();
     }

@@ -1,12 +1,64 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
+//object to hold local state/ single feedback item
+const feedbackLevelObject = {
+    comments: '',
+};
 
 class Comments extends Component {
 
+    constructor() {
+        super();
+
+        this.state = feedbackLevelObject;
+    }
+
+    //function to set state to chosen radio button value
+    handleChange = (event) => {
+        console.log('in handleChange');
+        this.setState({
+            ...this.state,
+            comments: event.target.value
+        });
+
+        console.log('previous state', this.state);
+    } 
+
     //function called when the next button is clicked
-    handleNext = (event) => {
-        this.props.history.push('/success');
+    handleSubmit = (event) => {
+        event.preventDefault();
+
+        console.log('comments submitted', this.state);
+
+        //variable to hold action for redux store
+        const action = { type: 'ADD_COMMENTS', payload: this.state }
+
+        this.props.dispatch(action);
+
+        //POST feedback data to database
+        axios({
+            method: 'POST',
+            url: '/feedback',
+            data: this.props.reduxState.feedBackInfo
+        })
+        .then((response) => {
+            console.log('back from POST:', response.data);
+            const action = {type: 'EMPTY_INFO'}
+            this.props.dispatch(action);
+            this.props.history.push('success');
+            this.clearFields();
+        })
+        .catch((error) => {
+            console.log('error posting feedback to database:', error);
+            alert('error posting feedback to database');
+        });
+
+    }
+
+    clearFields() {
+        this.setState(feedbackLevelObject);
     }
 
     render() {
@@ -15,9 +67,10 @@ class Comments extends Component {
 
             <div className="viewContainer">
                 <h2>Any comments you want to leave?</h2>
-
-
-                <button className="nextBtn" onClick={this.handleNext}>Submit</button>
+                <form onSubmit={this.handleSubmit}>
+                    <textarea onChange={this.handleChange}/>
+                    <button className="nextBtn" >Submit</button>
+                </form>   
             </div>
 
         )
