@@ -7,6 +7,7 @@ import Understanding from '../Understanding/Understanding.js';
 import Support from '../Support/Support.js';
 import Comments from '../Comments/Comments.js';
 import Success from '../Success/Success.js';
+import Admin from '../Admin/Admin.js';
 import './App.css';
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
           <Route path="/support" component={Support}/>
           <Route path="/comments" component={Comments}/>
           <Route path="/success" component={Success}/>
+          <Route path="/admin" component={Admin}/>
           <br />
         </div>
       </Router>

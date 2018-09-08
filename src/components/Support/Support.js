@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 class Support extends Component {
 
+    //function called when the next button is clicked
     handleNext = (event) => {
         this.props.history.push('/comments');
     }

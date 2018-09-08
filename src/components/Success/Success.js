@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 
 class Success extends Component {
 
+    //function called when the next button is clicked
     handleNext = (event) => {
-        this.props.history.push('/success');
+        this.props.history.push('/');
     }
 
     render() {
