@@ -32,6 +32,12 @@ class Admin extends Component{
         })
     }
 
+    deleteEntry = (event) => {
+        console.log('entry to delete:', event.target.value);
+        
+    }
+
+    //run getFeedBack when page loads
     componentDidMount(){
         this.getFeedBack();
         console.log('loaded admin page');
@@ -61,7 +67,7 @@ class Admin extends Component{
                                         <td>{entry.understanding_level}</td>
                                         <td>{entry.support_level}</td>
                                         <td>{entry.comments}</td>
-                                        <td><button>Delete</button></td>
+                                        <td><button onClick={this.deleteEntry} value={entry.id}>Delete</button></td>
                                     </tr>
                                 )
                             })}
