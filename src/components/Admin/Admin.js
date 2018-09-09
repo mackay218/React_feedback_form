@@ -34,13 +34,25 @@ class Admin extends Component{
 
     deleteEntry = (event) => {
         console.log('entry to delete:', event.target.value);
-        
+        let entryId = event.target.value;
+        axios({
+            method: 'DELETE',
+            url: '/feedback/' + entryId
+        })
+        .then((response) => {
+            console.log('deleted entry:', entryId);
+            //reload page
+            this.getFeedBack();
+        })
+        .catch((error) => {
+            console.log('error deleting entry:', error);
+        });
     }
 
     //run getFeedBack when page loads
     componentDidMount(){
         this.getFeedBack();
-        console.log('loaded admin page');
+
     }
 
     render(){

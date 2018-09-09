@@ -51,6 +51,23 @@ router.get('/', (req, res) => {
             console.log('error getting feedback:', error);
             res.sendStatus(500);
         })
-})
+});// end GET
+
+router.delete('/:id', (req, res) => {
+    console.log('DELETE entry:', req.params.id);
+    let entryToDelete = req.params.id;
+
+    const deleteEntryQuery = `DELETE FROM "feedback" WHERE "id" = $1;`;
+
+    pool.query(deleteEntryQuery, [entryToDelete])
+        .then((results) => {
+            console.log('entry deleted:', entryToDelete);
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log('error deleting entry:', error);
+            res.sendStatus(500);
+        });
+}); //end DELETE route
 
 module.exports = router;
