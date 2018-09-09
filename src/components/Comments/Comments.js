@@ -2,17 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-//object to hold local state/ single feedback item
-const feedbackLevelObject = {
-    comments: '',
-};
 
 class Comments extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
-        this.state = feedbackLevelObject;
+        this.state = {
+            ...this.props.reduxState.feedBackInfo, comments: 'unknown'
+        }
     }
 
     //function to set state to chosen radio button value
@@ -41,7 +39,7 @@ class Comments extends Component {
         axios({
             method: 'POST',
             url: '/feedback',
-            data: this.props.reduxState.feedBackInfo
+            data: this.state
         })
         .then((response) => {
             console.log('back from POST:', response.data);
@@ -58,7 +56,7 @@ class Comments extends Component {
     }
 
     clearFields() {
-        this.setState(feedbackLevelObject);
+        this.setState({});
     }
 
     render() {
