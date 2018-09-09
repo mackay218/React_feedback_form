@@ -1,12 +1,12 @@
 # Redux Feedback Loop
 
-> **PLEASE COMMENT YOUR CODE.** Do not clone this repository. Instead, download the zip, extract the contents, `git init`, `git add .`, `git commit -m "initial commit - base project"` and add your remote. Please do this before you leave for the day.
 
-"And as always, what do I end every day with?" - Luke
+This is an app to create simple feedback entries in a database 
+with a seperate view for each feedback criteria. The criteria are:
+feeling, understanding of material, support, and additional comments.
 
-
- For this assignment, you will be creating a feedback form modeled after Prime's system. Feedback will be collected over 4 views, and when all steps are complete, your app will save the feedback in the database. In a separate view, a user will be able to see all the collected feedback. 
-
+There is also and admin view to see the entries and delete them.
+ 
 ### SETUP
 
 Create your database and tables using the provided `data.sql` file. Start the server.
