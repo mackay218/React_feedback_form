@@ -32,14 +32,19 @@ class Understanding extends Component {
         
         console.log('understanding submitted', this.state);
 
-        //variable to hold action for redux store
-        const action = { type: 'ADD_UNDERSTANDING', payload: this.state }
+        if(this.state.understanding.length > 0){
+            //variable to hold action for redux store
+            const action = { type: 'ADD_UNDERSTANDING', payload: this.state }
 
-        this.props.dispatch(action);
+            this.props.dispatch(action);
 
-        this.props.history.push('support');
+            this.props.history.push('support');
 
-        this.clearFields();
+            this.clearFields();
+        }
+        else{
+            alert('please choose');
+        }
     }
 
     clearFields() {
@@ -57,19 +62,19 @@ class Understanding extends Component {
                         <i className="material-icons">mood_bad</i>
                         <input onChange={this.handleOptionChange}
                             value="1" checked={this.state.understanding === '1'}
-                            type="radio" name="radioBtn" />
+                            type="radio" name="radioBtn" required/>
                         <input onChange={this.handleOptionChange}
                             value="2" checked={this.state.understanding === '2'}
-                            type="radio" name="radioBtn" />
+                            type="radio" name="radioBtn" required/>
                         <input onChange={this.handleOptionChange}
                             value="3" checked={this.state.understanding === '3'}
-                            type="radio" name="radioBtn" />
+                            type="radio" name="radioBtn" required/>
                         <input onChange={this.handleOptionChange}
                             value="4" checked={this.state.understanding === '4'}
-                            type="radio" name="radioBtn" />
+                            type="radio" name="radioBtn" required/>
                         <input onChange={this.handleOptionChange}
                             value="5" checked={this.state.understanding === '5'}
-                            type="radio" name="radioBtn" />
+                            type="radio" name="radioBtn" required/>
                         <i className="material-icons">mood</i> 
                     </div>
                     <Button onClick={this.handleSubmit} className="nextBtn" >

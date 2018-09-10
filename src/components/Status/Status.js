@@ -33,14 +33,19 @@ class Status extends Component {
         
         console.log('feeling submitted', this.state);
 
-        //variable to hold action for redux store
-        const action = { type: 'ADD_FEELING', payload: this.state}
-        
-        this.props.dispatch(action);
+        if(this.state.feeling.length > 0){
+            //variable to hold action for redux store
+            const action = { type: 'ADD_FEELING', payload: this.state }
 
-        this.props.history.push('understanding');
+            this.props.dispatch(action);
 
-        this.clearFields();
+            this.props.history.push('understanding');
+
+            this.clearFields();
+        }
+        else{
+            alert('please choose');
+        }
     }
 
     clearFields() {

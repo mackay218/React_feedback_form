@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 
 //object to hold local state/ single feedback item
 const feedbackLevelObject = {
-    understanding: '',
+    support: '',
 };
 
 class Support extends Component {
@@ -32,14 +32,20 @@ class Support extends Component {
        
         console.log('support submitted', this.state);
 
-        //variable to hold action for redux store
-        const action = { type: 'ADD_SUPPORT', payload: this.state }
+        if(this.state.support.length > 0){
+            //variable to hold action for redux store
+            const action = { type: 'ADD_SUPPORT', payload: this.state }
 
-        this.props.dispatch(action);
+            this.props.dispatch(action);
 
-        this.props.history.push('comments');
+            this.props.history.push('comments');
 
-        this.clearFields();
+            this.clearFields();
+        }
+        else{
+            alert('please choose');
+        }
+       
     }
 
     clearFields() {
@@ -57,16 +63,16 @@ class Support extends Component {
                         <i className="material-icons">mood_bad</i>
                         <input onChange={this.handleOptionChange}
                             value="1" checked={this.state.support === '1'}
-                            type="radio" name="radioBtn" />
+                            type="radio" name="radioBtn" required/>
                         <input onChange={this.handleOptionChange}
                             value="2" checked={this.state.support === '2'}
-                            type="radio" name="radioBtn" />
+                            type="radio" name="radioBtn" required/>
                         <input onChange={this.handleOptionChange}
                             value="3" checked={this.state.support === '3'}
-                            type="radio" name="radioBtn" />
+                            type="radio" name="radioBtn" required/>
                         <input onChange={this.handleOptionChange}
                             value="4" checked={this.state.support === '4'}
-                            type="radio" name="radioBtn" />
+                            type="radio" name="radioBtn" required/>
                         <input onChange={this.handleOptionChange}
                             value="5" checked={this.state.support === '5'}
                             type="radio" name="radioBtn" />
