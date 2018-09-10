@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
+import Button from '@material-ui/core/Button';
 
 class Comments extends Component {
 
@@ -65,9 +66,9 @@ class Comments extends Component {
 
             <div className="viewContainer">
                 <h2>Any comments you want to leave?</h2>
-                <form onSubmit={this.handleSubmit}>
+                <form>
                     <textarea onChange={this.handleChange}/>
-                    <button className="nextBtn" >Submit</button>
+                    <Button onClick={this.handleSubmit} className="nextBtn" >Submit<i className="material-icons">done_outline</i></Button>
                 </form>   
             </div>
 

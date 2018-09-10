@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import Button from '@material-ui/core/Button';
 
 //object to hold local state/ single feedback item
 const feedbackLevelObject = {
@@ -52,23 +52,30 @@ class Understanding extends Component {
 
             <div className="viewContainer">
                 <h2>How well are you understanding the content?</h2>
-                <form onSubmit={this.handleSubmit}>
-                    <input onChange={this.handleOptionChange}
-                        value="1" checked={this.state.understanding === '1'}
-                        type="radio" name="radioBtn" />
-                    <input onChange={this.handleOptionChange}
-                        value="2" checked={this.state.understanding === '2'}
-                        type="radio" name="radioBtn" />
-                    <input onChange={this.handleOptionChange}
-                        value="3" checked={this.state.understanding === '3'}
-                        type="radio" name="radioBtn" />
-                    <input onChange={this.handleOptionChange}
-                        value="4" checked={this.state.understanding === '4'}
-                        type="radio" name="radioBtn" />
-                    <input onChange={this.handleOptionChange}
-                        value="5" checked={this.state.understanding === '5'}
-                        type="radio" name="radioBtn" />
-                    <button className="nextBtn" >Next</button>
+                <form >
+                    <div>
+                        <i className="material-icons">mood_bad</i>
+                        <input onChange={this.handleOptionChange}
+                            value="1" checked={this.state.understanding === '1'}
+                            type="radio" name="radioBtn" />
+                        <input onChange={this.handleOptionChange}
+                            value="2" checked={this.state.understanding === '2'}
+                            type="radio" name="radioBtn" />
+                        <input onChange={this.handleOptionChange}
+                            value="3" checked={this.state.understanding === '3'}
+                            type="radio" name="radioBtn" />
+                        <input onChange={this.handleOptionChange}
+                            value="4" checked={this.state.understanding === '4'}
+                            type="radio" name="radioBtn" />
+                        <input onChange={this.handleOptionChange}
+                            value="5" checked={this.state.understanding === '5'}
+                            type="radio" name="radioBtn" />
+                        <i className="material-icons">mood</i> 
+                    </div>
+                    <Button onClick={this.handleSubmit} className="nextBtn" >
+                        Next
+                        <i className="material-icons">forward</i>
+                    </Button>
                 </form>
             </div>
 

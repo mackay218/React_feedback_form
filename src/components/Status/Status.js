@@ -54,23 +54,25 @@ class Status extends Component {
             <div className="viewContainer">
                 <h2>How are you feeling?</h2>
                 <form >
-                    <i className="material-icons">mood_bad</i> 
-                    <input onChange={this.handleOptionChange} 
-                        value="1" checked={this.state.feeling === '1'} 
-                        type="radio" name="radioBtn" />
-                    <input onChange={this.handleOptionChange}
-                        value="2" checked={this.state.feeling === '2'}
-                        type="radio" name="radioBtn" />
-                    <input onChange={this.handleOptionChange}
-                        value="3" checked={this.state.feeling === '3'}
-                        type="radio" name="radioBtn" />
-                    <input onChange={this.handleOptionChange}
-                        value="4" checked={this.state.feeling === '4'}
-                        type="radio" name="radioBtn" />
-                    <input onChange={this.handleOptionChange}
-                        value="5" checked={this.state.feeling === '5'}
-                        type="radio" name="radioBtn" />   
-                    <i className="material-icons">mood</i> 
+                    <div>
+                        <i className="material-icons">mood_bad</i>
+                        <input onChange={this.handleOptionChange}
+                            value="1" checked={this.state.feeling === '1'}
+                            type="radio" name="radioBtn" />
+                        <input onChange={this.handleOptionChange}
+                            value="2" checked={this.state.feeling === '2'}
+                            type="radio" name="radioBtn" />
+                        <input onChange={this.handleOptionChange}
+                            value="3" checked={this.state.feeling === '3'}
+                            type="radio" name="radioBtn" />
+                        <input onChange={this.handleOptionChange}
+                            value="4" checked={this.state.feeling === '4'}
+                            type="radio" name="radioBtn" />
+                        <input onChange={this.handleOptionChange}
+                            value="5" checked={this.state.feeling === '5'}
+                            type="radio" name="radioBtn" />
+                        <i className="material-icons">mood</i> 
+                    </div>
                     <Button onClick={this.handleSubmit}className="nextBtn" >
                         Next
                         <i className="material-icons">forward</i>

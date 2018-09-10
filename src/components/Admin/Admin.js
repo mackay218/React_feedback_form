@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
+import './Admin.css';
 
 
 const emptyArr = [];
@@ -15,6 +15,9 @@ const styles = theme => ({
         width: theme.spacing.unit * 4,
         height: theme.spacing.unit * 4,
     },
+    deleteBtn: {
+        backgroundColor: '#fff'
+    }
 });
 
 class Admin extends Component{
@@ -87,8 +90,8 @@ class Admin extends Component{
         this.getFeedBack();
     }
 
-    render(){
-        const { classes } = this.props;
+    render() {
+        const {classes} = this.props;
         return(
 
             <div className="viewContainer">
@@ -111,7 +114,7 @@ class Admin extends Component{
                                         <td>{entry.understanding_level}</td>
                                         <td>{entry.support_level}</td>
                                         <td>{entry.comments}</td>
-                                        <td><Button onClick={this.handleClick} >Delete</Button></td>
+                                        <td><Button onClick={this.handleClick} ><i className="material-icons">close</i></Button></td>
                                         <Snackbar 
                                             anchorOrigin={{
                                                 vertical: 'top',
@@ -138,11 +141,8 @@ class Admin extends Component{
                         </tbody>
                     </table>
                 </div>
-                
             </div>
-
         )
-
     }
 }
 

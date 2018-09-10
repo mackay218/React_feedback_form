@@ -17,3 +17,32 @@
   font-size: large;
 }
 
+.viewContainer{
+  min-height: 60vh;
+  width: 90vw;
+  position: relative;
+  top: 20px;
+  left: 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+}
+
+Button{
+  max-width: 200px;
+  background-color: blue;
+}
+
+textarea{
+  height: 100px;
+  width: 300px;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
