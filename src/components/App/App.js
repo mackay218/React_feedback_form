@@ -15,6 +15,9 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
+          <style>
+            @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+          </style>
           <Header/>
           <Route exact path="/" component={Status}/>
           <Route path="/understanding" component={Understanding}/>

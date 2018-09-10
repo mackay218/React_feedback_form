@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+
 
 const emptyArr = [];
+
+const styles = theme => ({
+    close: {
+        width: theme.spacing.unit * 4,
+        height: theme.spacing.unit * 4,
+    },
+});
 
 class Admin extends Component{
    
@@ -11,11 +24,13 @@ class Admin extends Component{
 
         this.state = {
             feedback: emptyArr,
+            open: false,
         }
     }
 
     //GET all feedback
     getFeedBack = () => {
+        console.log('in getFeedBack');
         axios({
             method: 'GET',
             url: '/feedback'
@@ -23,18 +38,35 @@ class Admin extends Component{
         .then((response) => {
             console.log('got feedback:', response.data);
             this.setState({
+                ...this.state,
                 feedback: response.data,
             });
         })
         .catch((error) => {
             console.log('error getting feedback:', error);
             alert('error getting feedback');
-        })
-    }
+        }); //end GET request
+    };// end getFeedBack
+
+
+    handleClick = () => {
+        console.log('in handleClick');
+        this.setState({ 
+            ...this.state,
+            open: true });
+    };//end handleClick
+
+    handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        this.setState({ open: false });
+    };//end handleClose
 
     deleteEntry = (event) => {
-        console.log('entry to delete:', event.target.value);
-        let entryId = event.target.value;
+        console.log('entry to delete:', event.currentTarget.value);
+        let entryId = event.currentTarget.value;
         axios({
             method: 'DELETE',
             url: '/feedback/' + entryId
@@ -43,20 +75,20 @@ class Admin extends Component{
             console.log('deleted entry:', entryId);
             //reload page
             this.getFeedBack();
+            this.handleClose();
         })
         .catch((error) => {
             console.log('error deleting entry:', error);
-        });
-    }
+        });//end DELETE request
+    };// end deleteEntry
 
     //run getFeedBack when page loads
     componentDidMount(){
         this.getFeedBack();
-
     }
 
     render(){
-
+        const { classes } = this.props;
         return(
 
             <div className="viewContainer">
@@ -79,13 +111,34 @@ class Admin extends Component{
                                         <td>{entry.understanding_level}</td>
                                         <td>{entry.support_level}</td>
                                         <td>{entry.comments}</td>
-                                        <td><button onClick={this.deleteEntry} value={entry.id}>Delete</button></td>
+                                        <td><Button onClick={this.handleClick} >Delete</Button></td>
+                                        <Snackbar 
+                                            anchorOrigin={{
+                                                vertical: 'top',
+                                                horizontal: 'right',
+                                            }}
+                                            open={this.state.open}
+                                            onClose={this.handleClose}
+                                            ContentProps={{
+                                                'aria-describedby': 'message-id',
+                                            }}
+                                            message={<span id="message-id">Delete feedback?</span>}
+                                            action={[
+                                            <Button value={entry.id} key="yes" color="secondary" size="small" onClick={this.deleteEntry}>
+                                                Yes
+                                            </Button>,
+                                            <Button key="no" color="primary" size="small" onClick={this.handleClose}>
+                                                No
+                                            </Button>
+                                            ]}
+                                        />
                                     </tr>
                                 )
                             })}
                         </tbody>
                     </table>
                 </div>
+                
             </div>
 
         )
