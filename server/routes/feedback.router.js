@@ -19,8 +19,8 @@ router.post('/', (req, res) => {
     const allFeedBack = req.body;
 
     //query to add feedback entry to database
-    const addFeedBackQuery = `INSERT INTO "feedback" ("status_level", "understanding_level" ,
-                                                     "support_level", "comments") VALUES 
+    const addFeedBackQuery = `INSERT INTO "feedback" ("feeling", "understanding" ,
+                                                     "support", "comments") VALUES 
                                                      ($1, $2, $3, $4);`;
 
     pool.query(addFeedBackQuery, [allFeedBack.feeling, allFeedBack.understanding, 

@@ -110,9 +110,9 @@ class Admin extends Component{
                             {this.state.feedback.map((entry, i) => {
                                 return(
                                     <tr key={i}>
-                                        <td>{entry.status_level}</td>
-                                        <td>{entry.understanding_level}</td>
-                                        <td>{entry.support_level}</td>
+                                        <td>{entry.feeling}</td>
+                                        <td>{entry.understanding}</td>
+                                        <td>{entry.support}</td>
                                         <td>{entry.comments}</td>
                                         <td><Button onClick={this.handleClick} ><i className="material-icons">close</i></Button></td>
                                         <Snackbar 

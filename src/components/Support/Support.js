@@ -20,7 +20,7 @@ class Support extends Component {
         console.log('in handleOptionChange');
         this.setState({
             ...this.state,
-            support: event.target.value
+            support: parseInt(event.target.value)
         });
 
         console.log('previous state', this.state);
@@ -32,7 +32,7 @@ class Support extends Component {
        
         console.log('support submitted', this.state);
 
-        if(this.state.support.length > 0){
+        if(this.state.support > 0){
             //variable to hold action for redux store
             const action = { type: 'ADD_SUPPORT', payload: this.state }
 
@@ -62,19 +62,19 @@ class Support extends Component {
                     <div>
                         <i className="material-icons">mood_bad</i>
                         <input onChange={this.handleOptionChange}
-                            value="1" checked={this.state.support === '1'}
+                            value="1" checked={this.state.support === 1}
                             type="radio" name="radioBtn" required/>
                         <input onChange={this.handleOptionChange}
-                            value="2" checked={this.state.support === '2'}
+                            value="2" checked={this.state.support === 2}
                             type="radio" name="radioBtn" required/>
                         <input onChange={this.handleOptionChange}
-                            value="3" checked={this.state.support === '3'}
+                            value="3" checked={this.state.support === 3}
                             type="radio" name="radioBtn" required/>
                         <input onChange={this.handleOptionChange}
-                            value="4" checked={this.state.support === '4'}
+                            value="4" checked={this.state.support === 4}
                             type="radio" name="radioBtn" required/>
                         <input onChange={this.handleOptionChange}
-                            value="5" checked={this.state.support === '5'}
+                            value="5" checked={this.state.support === 5}
                             type="radio" name="radioBtn" />
                         <i className="material-icons">mood</i>
                     </div>

@@ -21,7 +21,7 @@ class Status extends Component {
         console.log('in handleOptionChange');
         this.setState({
             ...this.state,
-            feeling: event.target.value
+            feeling: parseInt(event.target.value)
         });
 
         console.log('previous state', this.state);
@@ -31,9 +31,9 @@ class Status extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         
-        console.log('feeling submitted', this.state);
+        console.log('feeling submitted', this.state.feeling);
 
-        if(this.state.feeling.length > 0){
+        if(this.state.feeling > 0){
             //variable to hold action for redux store
             const action = { type: 'ADD_FEELING', payload: this.state }
 
@@ -62,19 +62,19 @@ class Status extends Component {
                     <div>
                         <i className="material-icons">mood_bad</i>
                         <input onChange={this.handleOptionChange}
-                            value="1" checked={this.state.feeling === '1'}
+                            value="1" checked={this.state.feeling === 1}
                             type="radio" name="radioBtn" />
                         <input onChange={this.handleOptionChange}
-                            value="2" checked={this.state.feeling === '2'}
+                            value="2" checked={this.state.feeling === 2}
                             type="radio" name="radioBtn" />
                         <input onChange={this.handleOptionChange}
-                            value="3" checked={this.state.feeling === '3'}
+                            value="3" checked={this.state.feeling === 3}
                             type="radio" name="radioBtn" />
                         <input onChange={this.handleOptionChange}
-                            value="4" checked={this.state.feeling === '4'}
+                            value="4" checked={this.state.feeling === 4}
                             type="radio" name="radioBtn" />
                         <input onChange={this.handleOptionChange}
-                            value="5" checked={this.state.feeling === '5'}
+                            value="5" checked={this.state.feeling === 5}
                             type="radio" name="radioBtn" />
                         <i className="material-icons">mood</i> 
                     </div>
